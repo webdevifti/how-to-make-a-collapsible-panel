@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>How to make a collapsible panel</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		.wrap{
+			width: 80%;
+			margin: 30px auto;
+		}
+		.collapse{
+			background-color: #0098BC;
+			color: #fff;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			outline: none;
+			text-align: left;
+			font-size: 18px;
+		}
+		.active,
+		.collapse:hover{
+			background-color: #555;
+		}
+		.collapse::after{
+			content: "\002b";
+			color: #fff;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+		.active::after{
+			content: "\2212";
+		}
+		.content{
+			padding: 0 18px;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.3s ease-out;
+			background-color: #f1f1f1;
+		}
+	</style>
+</head>
+<body>
+
+<div class="wrap">
+	<button type="button" class="collapse">Click to Show hiddent content</button>
+	<div class="content">
+		<h2>You can add a title here</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	var collapse = document.getElementsByClassName("collapse");
+	var i;
+	for(i = 0; i < collapse.length; i++){
+		collapse[i].addEventListener("click", function(){
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if(content.style.maxHeight){
+				content.style.maxHeight = null;
+			} else {
+				content.style.maxHeight = content.scrollHeight + "px";
+			}
+		});
+	}
+</script>
+</body>
+</html>
